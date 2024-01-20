@@ -1,4 +1,4 @@
-import BigBtn from "./BigBtn";
+import BtnStandard from "./BtnStandard";
 
 export default function Navbar() {
   return (
@@ -8,10 +8,10 @@ export default function Navbar() {
     >
       <form className="flex gap-2 sm:gap-3">
         <input type="text" className="border-2 bg-neutral-200"></input>
-        <BigBtn label="Search" />
+        <BtnStandard label="Search" />
       </form>
-      <BigBtn label="Advanced Search" />
-      <BigBtn label="Login" tailwind="ml-auto" />
+      <BtnStandard label="Advanced Search" />
+      <BtnStandard label="Login" tailwind="ml-auto" />
     </div>
   );
 }

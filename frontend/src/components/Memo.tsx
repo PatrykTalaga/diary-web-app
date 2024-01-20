@@ -1,21 +1,19 @@
 import convertDate from "../functions/convertDate";
 import BtnStandard from "./BtnStandard";
 
-const data = {
-  title: "Title",
-  text: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam
-  nobis eius perferendis deserunt cum eaque exercitationem accusamus iure optio
-  ducimus quod, nulla neque eos sed nostrum fuga architecto alias repellendus
-  dolores esse. Distinctio aut expedita laudantium iure autem laborum quae
-  doloribus animi nihil. Voluptate culpa autem, repellendus quos cumque optio.`,
-  img: "bg-black.jpg",
-  tags: [`tagOne, tagTwo, work, alf, don't, eat, the, cat`],
-  createdAt: new Date(),
-  edited: true,
-  editedAt: new Date(),
+type Props = {
+  data: {
+    title: string;
+    text: string;
+    img: string;
+    tags: Array<string>;
+    createdAt: Date;
+    edited: boolean;
+    editedAt: Date;
+  };
 };
 
-export default function Memo() {
+export default function Memo({ data }: Props) {
   return (
     <div
       className="flex flex-col justify-center items-start px-5 mx-5 py-2
@@ -39,9 +37,9 @@ export default function Memo() {
             className="max-h-56 max-w-80 float-left m-2"
           ></img>
         )}
-        <text className="text-sm ml-2 py-1 bg-[url(../images/'bg-black.jpg')]">
+        <p className="text-sm ml-2 py-1 bg-[url(../images/'bg-black.jpg')]">
           {data.text}
-        </text>
+        </p>
       </section>
 
       <section className="flex flex-col gap-2 py-1 text-sm">

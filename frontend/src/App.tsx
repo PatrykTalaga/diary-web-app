@@ -1,48 +1,193 @@
+import { useState } from "react";
 import "./App.css";
 import BtnStandard from "./components/BtnStandard";
 import Memo from "./components/Memo";
 import Task from "./components/Task";
 
+const dataMemo = [
+  {
+    id: "12333232234213",
+    title: "Title",
+    text: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam
+  nobis eius perferendis deserunt cum eaque exercitationem accusamus iure optio
+  ducimus quod, nulla neque eos sed nostrum fuga architecto alias repellendus
+  dolores esse. Distinctio aut expedita laudantium iure autem laborum quae
+  doloribus animi nihil. Voluptate culpa autem, repellendus quos cumque optio.
+  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam
+  nobis eius perferendis deserunt cum eaque exercitationem accusamus iure optio
+  ducimus quod, nulla neque eos sed nostrum fuga architecto alias repellendus
+  dolores esse. Distinctio aut expedita laudantium iure autem laborum quae
+  doloribus animi nihil. Voluptate culpa autem, repellendus quos cumque optio.
+  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam
+  nobis eius perferendis deserunt cum eaque exercitationem accusamus iure optio
+  ducimus quod, nulla neque eos sed nostrum fuga architecto alias repellendus
+  dolores esse. Distinctio aut expedita laudantium iure autem laborum quae
+  doloribus animi nihil. Voluptate culpa autem, repellendus quos cumque optio.`,
+    img: "bg-black.jpg",
+    tags: [`tagOne, tagTwo, work, alf, don't, eat, the, cat`],
+    createdAt: new Date(),
+    edited: true,
+    editedAt: new Date(),
+  },
+  {
+    id: "12334213",
+    title: "Title",
+    text: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam
+  nobis eius perferendis deserunt cum eaque exercitationem accusamus iure optio
+  ducimus quod, nulla neque eos sed nostrum fuga architecto alias repellendus
+  dolores esse. Distinctio aut expedita laudantium iure autem laborum quae
+  doloribus animi nihil. Voluptate culpa autem, repellendus quos cumque optio.`,
+    img: "bg-black.jpg",
+    tags: [`tagOne, tagTwo, work, alf, don't, eat, the, cat`],
+    createdAt: new Date(),
+    edited: true,
+    editedAt: new Date(),
+  },
+  {
+    id: "123342132",
+    title: "Title 2",
+    text: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam
+  nobis eius perferendis deserunt cum eaque exercitationem accusamus iure optio
+  ducimus quod, nulla neque eos sed nostrum fuga architecto alias repellendus
+  dolores esse. Distinctio aut expedita laudantium iure autem laborum quae
+  doloribus animi nihil. Voluptate culpa autem, repellendus quos cumque optio.`,
+    img: "",
+    tags: [`tagOne, don't, eat, the, cat`],
+    createdAt: new Date(),
+    edited: false,
+    editedAt: new Date(),
+  },
+  {
+    id: "123374213",
+    title: "Title 3",
+    text: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam
+  nobis eius perferendis deserunt cum eaque exercitationem accusamus iure.`,
+    img: "bg-black.jpg",
+    tags: [`tagOne, tagTwo, work, alf, don't, eat, the, cat`],
+    createdAt: new Date(),
+    edited: false,
+    editedAt: new Date(),
+  },
+  {
+    id: "12337421323",
+    title: "Title 3",
+    text: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam
+  nobis eius perferendis deserunt cum eaque exercitationem accusamus iure.`,
+    img: "bg-black.jpg",
+    tags: [`tagOne, tagTwo, work, alf, don't, eat, the, cat`],
+    createdAt: new Date(),
+    edited: false,
+    editedAt: new Date(),
+  },
+  {
+    id: "12337334213",
+    title: "Title 3",
+    text: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam
+  nobis eius perferendis deserunt cum eaque exercitationem accusamus iure.`,
+    img: "bg-black.jpg",
+    tags: [`tagOne, tagTwo, work, alf, don't, eat, the, cat`],
+    createdAt: new Date(),
+    edited: false,
+    editedAt: new Date(),
+  },
+  {
+    id: "123374212313",
+    title: "Title 3",
+    text: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam
+  nobis eius perferendis deserunt cum eaque exercitationem accusamus iure.`,
+    img: "bg-black.jpg",
+    tags: [`tagOne, tagTwo, work, alf, don't, eat, the, cat`],
+    createdAt: new Date(),
+    edited: false,
+    editedAt: new Date(),
+  },
+];
+
+const dataTask = [
+  {
+    id: "123345213",
+    title: "Title 1",
+    text: `Lorem ipsum dolor sit amet, consectetur adipisicing elit!`,
+    createdAt: new Date(),
+    completed: false,
+    completeddAt: new Date(),
+  },
+  {
+    id: "1223344213",
+    title: "Title 2",
+    text: `Lorem ipsum dolor sit amet, consectetur adipisicing elit!
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit!`,
+    createdAt: new Date(),
+    completed: true,
+    completeddAt: new Date(),
+  },
+  {
+    id: "123113213",
+    title: "Title 3",
+    text: `Lorem ipsum dolor sit amet, consectetur adipisicing elit!`,
+    createdAt: new Date(),
+    completed: true,
+    completeddAt: new Date(),
+  },
+  {
+    id: "12336533",
+    title: "Title 4",
+    text: `Lorem ipsum dolor sit amet, consectetur adipisicing elit!
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit!
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit!`,
+    createdAt: new Date(),
+    completed: false,
+    completeddAt: new Date(),
+  },
+];
+
 function App() {
+  const [memosDisp, setMemosDisp] = useState(3);
+
+  function loadMore() {
+    setMemosDisp(memosDisp + 3);
+  }
+
   return (
     <>
       <div
-        className="w-full min-h-screen bg-stone-500 sm:bg-[url('/src/assets/bg-landscape.jpg')]  
-        bg-scroll bg-center bg-repeat sm:bg-no-repeat sm:bg-cover 
-        flex flex-col justify-between"
+        className="w-full min-h-screen bg-stone-500 flex flex-col
+        justify-between"
       >
-        <BtnStandard label="Add New" tailwind="mx-auto my-2 sm:my-4 text-xl" />
-        <section
-          className="flex flex-col gap-2 items-center justify-start pt-5 sm:pt-0
+        <BtnStandard label="Add New" tailwind=" mx-auto my-2 sm:my-4 text-xl" />
+
+        <ul
+          className="flex flex-col gap-2 items-center justify-start
         sm:grid sm:grid-cols-3 sm:gap-2 sm:mx-2 "
         >
-          <Memo />
-        </section>
+          {dataMemo.slice(0, memosDisp).map((data) => (
+            <li key={data.id}>
+              <Memo data={data} />
+            </li>
+          ))}
+        </ul>
 
-        <div className="flex justify-center gap-10 my-2">
-          <p className="text-2xl text-stone-100 font-bold hidden sm:flex">
-            {"<-Previous"}
-          </p>
-          <p className="text-2xl text-stone-100 font-bold hidden sm:flex">
-            {"Next->"}
-          </p>
-        </div>
         <BtnStandard
+          onClick={loadMore}
           label="Load More"
-          tailwind="mx-auto my-2 text-xl visible sm:hidden"
+          tailwind="mx-auto my-2 text-xl"
         />
 
         <section className="bg-stone-400 bg-opacity-70 border-t">
           <div className="flex items-center gap-2 p-2">
-            <header className="text-2xl text-neutral-100 mr-2">Notes</header>
-            <BtnStandard label="Clear Completed" tailwind="bg-stone-600" />
+            <header className="text-2xl text-neutral-100 mr-2">Tasks</header>
+            <BtnStandard label="Clear Completed" />
           </div>
-          <div className="grid grid-cols-2 gap-2 p-2 sm:grid-cols-4">
-            <Task />
-            <Task />
-            <Task />
-            <Task />
-          </div>
+          <ul
+            className="grid grid-cols-2 gap-2 p-2 sm:grid-cols-4 sm:gap-5
+          sm:px-5"
+          >
+            {dataTask.map((data) => (
+              <li key={data.id}>
+                <Task data={data} />
+              </li>
+            ))}
+          </ul>
         </section>
       </div>
     </>
