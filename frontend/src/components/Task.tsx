@@ -28,8 +28,12 @@ export default function Task({ data }: Props) {
         <header className="text-xl text-stone-500 line-through">
           {data.title}
         </header>
-        <p className="line-through text-sm text-stone-500">{data.text}</p>
-        <BtnStandard onClick={deleteTask} label="Delete" tailwind="mx-auto" />
+        <p className="line-through text-sm text-stone-500 mb-2">{data.text}</p>
+        <BtnStandard
+          onClick={deleteTask}
+          label="Delete"
+          tailwind="mx-auto mt-auto"
+        />
       </div>
     );
   }
@@ -39,8 +43,12 @@ export default function Task({ data }: Props) {
     rounded-lg bg-stone-300 bg-opacity-70 h-full"
     >
       <header className="text-xl text-white">{data.title}</header>
-      <p className="text-sm">{data.text}</p>
-      <BtnStandard onClick={completeTask} label="Complete" tailwind="mx-auto" />
+      <p className="text-sm mb-2">{data.text}</p>
+      <BtnStandard
+        onClick={completeTask}
+        label="Complete"
+        tailwind="mx-auto mt-auto"
+      />
     </div>
   );
 }

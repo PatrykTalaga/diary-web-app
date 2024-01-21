@@ -2,6 +2,9 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import ErrorPage from "./ErrorPage";
 import Search from "./Search";
+import CompletedTasks from "./CompletedTasks";
+import DeletedMemos from "./DeletedMemos";
+import PreviousVersions from "./PreviousVersions";
 
 export default function Router() {
   const router = createBrowserRouter([
@@ -17,17 +20,17 @@ export default function Router() {
     },
     {
       path: "/completedTasks",
-      element: <App />,
+      element: <CompletedTasks />,
       errorElement: <ErrorPage />,
     },
     {
-      path: "/previousVersions:memoId",
-      element: <App />,
+      path: "/previousVersions",
+      element: <PreviousVersions />,
       errorElement: <ErrorPage />,
     },
     {
       path: "/deletedMemos",
-      element: <App />,
+      element: <DeletedMemos />,
       errorElement: <ErrorPage />,
     },
   ]);
