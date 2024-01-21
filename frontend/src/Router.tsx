@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import ErrorPage from "./ErrorPage";
+import Search from "./Search";
 
 export default function Router() {
   const router = createBrowserRouter([
@@ -11,7 +12,7 @@ export default function Router() {
     },
     {
       path: "/search",
-      element: <App />,
+      element: <Search />,
       errorElement: <ErrorPage />,
     },
     {

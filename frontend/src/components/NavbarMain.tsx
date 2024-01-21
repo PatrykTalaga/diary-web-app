@@ -1,7 +1,7 @@
 import BtnStandard from "./BtnStandard";
 import StandardLink from "./StandardLink";
 
-export default function Navbar() {
+export default function NavbarMain() {
   function search() {
     console.log(search);
   }

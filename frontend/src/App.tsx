@@ -4,7 +4,7 @@ import BtnStandard from "./components/BtnStandard";
 import Memo from "./components/Memo";
 import Task from "./components/Task";
 import StandardLink from "./components/StandardLink";
-import Navbar from "./components/Navbar";
+import NavbarMain from "./components/NavbarMain";
 import AddMemoModal from "./components/AddMemoModal";
 
 const dataMemo = [
@@ -162,7 +162,7 @@ function App() {
         className="w-full min-h-screen bg-stone-500 flex flex-col
         justify-between"
       >
-        <Navbar></Navbar>
+        <NavbarMain />
         <AddMemoModal isOpen={isOpen} closeForm={() => setIsOpen(false)} />
 
         <BtnStandard
