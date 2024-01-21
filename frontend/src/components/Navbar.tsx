@@ -1,6 +1,11 @@
 import BtnStandard from "./BtnStandard";
+import StandardLink from "./StandardLink";
 
 export default function Navbar() {
+  function search() {
+    console.log(search);
+  }
+
   return (
     <div
       className="w-full flex gap-2 sm:gap-3 justify-start p-3 bg-stone-400
@@ -8,9 +13,9 @@ export default function Navbar() {
     >
       <form className="flex gap-2 sm:gap-3">
         <input type="text" className="border-2 bg-neutral-200"></input>
-        <BtnStandard label="Search" />
+        <BtnStandard onClick={search} label="Search" />
       </form>
-      <BtnStandard label="Advanced Search" />
+      <StandardLink link="search" label="Advanced Search" />
       <BtnStandard label="Login" tailwind="ml-auto" />
     </div>
   );

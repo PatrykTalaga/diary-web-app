@@ -11,6 +11,14 @@ type Props = {
 };
 
 export default function Task({ data }: Props) {
+  function completeTask() {
+    console.log("completeTask");
+  }
+
+  function deleteTask() {
+    console.log("deleteTask");
+  }
+
   if (data.completed) {
     return (
       <div
@@ -21,7 +29,7 @@ export default function Task({ data }: Props) {
           {data.title}
         </header>
         <p className="line-through text-sm text-stone-500">{data.text}</p>
-        <BtnStandard label="Delete" tailwind="mx-auto" />
+        <BtnStandard onClick={deleteTask} label="Delete" tailwind="mx-auto" />
       </div>
     );
   }
@@ -32,7 +40,7 @@ export default function Task({ data }: Props) {
     >
       <header className="text-xl text-white">{data.title}</header>
       <p className="text-sm">{data.text}</p>
-      <BtnStandard label="Complete" tailwind="mx-auto" />
+      <BtnStandard onClick={completeTask} label="Complete" tailwind="mx-auto" />
     </div>
   );
 }

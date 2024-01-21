@@ -3,6 +3,9 @@ import "./App.css";
 import BtnStandard from "./components/BtnStandard";
 import Memo from "./components/Memo";
 import Task from "./components/Task";
+import StandardLink from "./components/StandardLink";
+import Navbar from "./components/Navbar";
+import AddMemoModal from "./components/AddMemoModal";
 
 const dataMemo = [
   {
@@ -143,9 +146,14 @@ const dataTask = [
 
 function App() {
   const [memosDisp, setMemosDisp] = useState(3);
+  const [isOpen, setIsOpen] = useState(false);
 
   function loadMore() {
     setMemosDisp(memosDisp + 3);
+  }
+
+  function clearTasks() {
+    console.log(clearTasks);
   }
 
   return (
@@ -154,7 +162,14 @@ function App() {
         className="w-full min-h-screen bg-stone-500 flex flex-col
         justify-between"
       >
-        <BtnStandard label="Add New" tailwind=" mx-auto my-2 sm:my-4 text-xl" />
+        <Navbar></Navbar>
+        <AddMemoModal isOpen={isOpen} closeForm={() => setIsOpen(false)} />
+
+        <BtnStandard
+          onClick={() => setIsOpen(true)}
+          label="Add New"
+          tailwind=" mx-auto my-2 sm:my-4 text-xl"
+        />
 
         <ul
           className="flex flex-col gap-2 items-center justify-start
@@ -176,7 +191,8 @@ function App() {
         <section className="bg-stone-400 bg-opacity-70 border-t">
           <div className="flex items-center gap-2 p-2">
             <header className="text-2xl text-neutral-100 mr-2">Tasks</header>
-            <BtnStandard label="Clear Completed" />
+            <BtnStandard onClick={clearTasks} label="Clear Completed" />
+            <StandardLink link="/completedTasks" label="View Completed Tasks" />
           </div>
           <ul
             className="grid grid-cols-2 gap-2 p-2 sm:grid-cols-4 sm:gap-5
